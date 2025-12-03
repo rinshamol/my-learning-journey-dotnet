@@ -1,0 +1,9 @@
+GET http://localhost:5145/
+
+###
+
+GET http://localhost:5145/hello
+
+###
+
+POST http://localhost:5145/postMethod

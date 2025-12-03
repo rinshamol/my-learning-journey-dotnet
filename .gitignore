@@ -1,0 +1,39 @@
+# Build folders
+bin/
+obj/
+out/
+publish/
+
+# Visual Studio settings
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+*.rsuser
+*.sln.docstates
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.nuget.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secret config (optional)
+appsettings.Development.json
+.env
+
+# Backup files
+*.tmp
+*.bak
+*.cache
