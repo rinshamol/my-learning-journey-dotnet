@@ -17,11 +17,12 @@ It demonstrates:
 ## 🚀 How to Run
 
 1. Clone the repository:
-
+`git clone https://github.com/rinshamol/my-learning-journey-dotnet.git`
 2. Navigate into the project:
-3. Restore dependencies:
+`cd my-learning-journey-dotnet/ProductApp/`
+4. Restore dependencies:
 `dotnet restore`
-4. Run the app:
+5. Run the app:
 `dotnet run`
 
 ## 🛠 Technologies Used
