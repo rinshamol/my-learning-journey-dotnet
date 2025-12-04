@@ -7,3 +7,17 @@ GET http://localhost:5145/hello
 ###
 
 POST http://localhost:5145/postMethod
+
+###
+GET http://localhost:5145/users/10/posts/success
+###
+GET http://localhost:5145/products/1
+###
+GET http://localhost:5145/report
+
+###
+GET http://localhost:5145/file/Images/cat.jpg
+###
+GET http://localhost:5145/search?q=cat&page=10
+###
+GET http://localhost:5145/mixture/2/rinsha/Image/img.jpg?data=10
