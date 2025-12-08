@@ -1,0 +1,14 @@
+### Manual Json Serialization
+GET  http://localhost:5071/manual-json    
+Accept: application/json
+
+### Custom Json Serialization
+GET  http://localhost:5071/custom-serializer  
+
+### Automatic Json Serialization (using TypedResult)
+GET  http://localhost:5071/json   
+
+### Automatic Json Serialization (simply returning an object)
+GET  http://localhost:5071/auto                        
+### Manual XML Serialization
+GET  http://localhost:5071/xml                     
