@@ -1,0 +1,35 @@
+### auto Json Deserialization
+POST http://localhost:5216/auto
+Content-Type: application/json
+
+{
+    "UserName" : "Rinsha",
+    "UserAge" : 22
+}
+
+### Json Deserialization
+POST http://localhost:5216/json
+Content-Type: application/json
+
+{
+    "UserName" : "Rinsha",
+    "UserAge" : 22
+}
+
+### Custom Json Deserialization
+POST http://localhost:5216/custom
+Content-Type: application/json
+
+{
+    "UserName" : "Rinsha",
+    "UserAge" : 22
+}
+
+### auto xml Deserialization
+POST http://localhost:5216/xml
+Content-Type: application/xml
+
+<Person>
+    <UserName>Rinsha</UserName>
+    <UserAge>22</UserAge>
+</Person>
