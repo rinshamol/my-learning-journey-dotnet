@@ -37,3 +37,8 @@ appsettings.Development.json
 *.tmp
 *.bak
 *.cache
+
+# Ignore generated serialization output files
+person.json
+person.xml
+person.dat
