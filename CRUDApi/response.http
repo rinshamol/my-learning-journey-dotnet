@@ -21,3 +21,14 @@ Content-Type: application/json
     "title" : "This is my Changed Blog",
     "body" : "This is my Changed post"
 }
+
+### Middleware check
+
+POST http://localhost:5176/blog/
+Content-Type: application/json
+X-Api-Key: thisIsBadPassword
+
+{
+    "title" : "This is my Changed Blog",
+    "body" : "This is my Changed post"
+}

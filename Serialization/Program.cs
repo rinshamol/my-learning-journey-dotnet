@@ -46,9 +46,7 @@ app.MapGet("/xml", () =>
     return TypedResults.Text(xmlOutput,"application/xml");
 });
 
-
 app.Run();
-
 public class Person
 {
     required public string UserName { get;set; }

@@ -7,6 +7,40 @@ var blogs = new List<Blog>
     new Blog { Title = "My Second Blog", Body = "This is my Second post"}
 };
 
+// implementing custom middleware
+app.Use(async(context, next) =>
+{   
+    var statTime = DateTime.UtcNow;
+    Console.WriteLine($"start time: {statTime}");
+    await next.Invoke();
+    var duration = DateTime.UtcNow - statTime;
+    Console.WriteLine($"duration: {duration}");
+
+});
+app.Use(async (context, next) =>
+{   //code before
+    Console.WriteLine(context.Request.Path);
+    await next.Invoke();
+    //code after
+    Console.WriteLine(context.Response.StatusCode);
+});
+
+app.UseWhen(
+    context => context.Request.Method != "GET",
+    appBuilder => appBuilder.Use(async(context, next) =>
+    {
+        var extractedPassword = context.Request.Headers["X-Api-Key"];
+        if(extractedPassword == "thisIsBadPassword")
+        {
+            await next.Invoke();
+       } else
+        {
+            context.Response.StatusCode = 401;
+            await context.Response.WriteAsync("Invalid Api kay");
+        }
+    })
+);
+
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/blog", () =>
 {
