@@ -1,4 +1,9 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 var builder = WebApplication.CreateBuilder(args);
+// builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 var blogs = new List<Blog>
@@ -6,6 +11,12 @@ var blogs = new List<Blog>
     new Blog { Title = "My First Blog", Body = "This is my first post"},
     new Blog { Title = "My Second Blog", Body = "This is my Second post"}
 };
+
+if(app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // implementing custom middleware
 app.Use(async(context, next) =>
@@ -41,23 +52,32 @@ app.UseWhen(
     })
 );
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello World!").ExcludeFromDescription();
 app.MapGet("/blog", () =>
 {
     return blogs;
 });
-app.MapGet("/blog/{id}", (int id) =>
+
+app.MapGet("/blog/{id}",
+[EndpointDescription("Return a single blog")]
+[EndpointSummary("Get single blog")]
+ Results<Ok<Blog>,NotFound> (int id) =>
 {
     if ( id < 0 || id >= blogs.Count)
     {
-        return Results.NotFound();
+        return TypedResults.NotFound();
     }else
     {
-        return Results.Ok(blogs[id]);  
+        return TypedResults.Ok(blogs[id]);  
     }
 });
 
 app.MapPost("/blog", (Blog blog) =>
+{
+    blogs.Add(blog);
+    return Results.Created($"/blog/{blogs.Count - 1}", blog);
+});
+app.MapPost("/blog/api", (Blog blog) =>
 {
     blogs.Add(blog);
     return Results.Created($"/blog/{blogs.Count - 1}", blog);

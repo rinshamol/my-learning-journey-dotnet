@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ### Middleware check
 
-POST http://localhost:5176/blog/
+POST http://localhost:5176/blog/api
 Content-Type: application/json
 X-Api-Key: thisIsBadPassword
 
